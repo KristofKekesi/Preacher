@@ -7,7 +7,7 @@
 <span style="text-align: justify;">Preacher is an app to read your favorite religious books.</span>
 
 
-## State <img src="https://img.shields.io/badge/Release-green.svg" alt="">
+## State <img src="https://img.shields.io/badge/Assets-blue.svg" alt="">
 <img src="img/state.png">
  
 ## Made with <img src="https://img.shields.io/badge/Flutter-blue.svg" alt=""> <img src="https://img.shields.io/badge/Android Studio-green.svg" alt="">
