@@ -8,7 +8,7 @@
 
 
 ## State <img src="https://img.shields.io/badge/Assets-blue.svg" alt="">
-<img src="img/state.png">
+<img src="img/assets.png">
  
 ## Made with <img src="https://img.shields.io/badge/Flutter-blue.svg" alt=""> <img src="https://img.shields.io/badge/Android Studio-green.svg" alt="">
 Made with __Flutter SDK__ in __Dart__. Programmed in __Android Studio__ and __WebStorm__. 
