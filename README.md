@@ -1,8 +1,10 @@
+<p align="center">
+   <img width="128" align="center" src="img/logo.svg"></p>
 <h1 align="center">
   Preacher
 </h1>
 
-<img src="https://img.shields.io/badge/Status-Assets-blue.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-1-blue.svg" alt=""> <img src="https://img.shields.io/badge/Build-Passed-green.svg" alt=""> [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
+<img src="https://img.shields.io/badge/Status-Assets-blue.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-3-blue.svg" alt=""> <img src="https://img.shields.io/badge/Build-Passed-green.svg" alt=""> [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
 
 <span style="text-align: justify;">Preacher is an app to read your favorite religious books.</span>
 
@@ -13,10 +15,12 @@
 ## Made with <img src="https://img.shields.io/badge/Flutter-blue.svg" alt=""> <img src="https://img.shields.io/badge/Android Studio-green.svg" alt="">
 Made with __Flutter SDK__ in __Dart__. Programmed in __Android Studio__ and __WebStorm__. 
 
-## Contributors <img src="https://img.shields.io/badge/1-blue.svg" alt="">
+## Contributors <img src="https://img.shields.io/badge/3-blue.svg" alt="">
 * _[Programming]_  - [__Kristóf Kékesi__](https://github.com/KristofKekesi)
  
-* _[JSON Formatting]_ - [__Kristóf Kékesi__](https://github.com/KristofKekesi)
+* _[JSON Formatting]_ - [__Kristóf Kékesi__](https://github.com/KristofKekesi), [__Klári Bory__](https://www.instagram.com/boryklara/)
+
+* _[Logo]_  - [__Farkas Bódis](https://github.com/BodisFarkas)
 ## Contacts [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
 
 <table>
