@@ -18,7 +18,7 @@ Made with __Flutter SDK__ in __Dart__. Programmed in __Android Studio__ and __We
 ## Contributors <img src="https://img.shields.io/badge/3-blue.svg" alt="">
 * _[Programming]_  - [__Kristóf Kékesi__](https://github.com/KristofKekesi)
  
-* _[JSON Formatting]_ - [__Kristóf Kékesi__](https://github.com/KristofKekesi), [__Klári Bory__](https://www.instagram.com/boryklara/)
+* _[JSON Formatting]_ - [__Kristóf Kékesi__](https://github.com/KristofKekesi),[__Klári Bory__](https://www.instagram.com/boryklara/)
 
 * _[Logo]_  - [__Farkas Bódis](https://github.com/BodisFarkas)
 ## Contacts [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
