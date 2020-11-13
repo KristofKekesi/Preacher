@@ -8,8 +8,8 @@ part of 'languages.dart';
 
 Data _$LanguagesFromJson(Map<String, dynamic> json) {
   return Data(
-    type: json['type'] as String,
-    url: json['url'] as String,
+    type: json['meta']['type'] as String,
+    url: json['meta']['url'] as String,
     data: json['data'] as Map,);
 }
 
