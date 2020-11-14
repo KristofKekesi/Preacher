@@ -7,8 +7,8 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="preacher"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Preacher"
+        android:icon="@mipmap/preacher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

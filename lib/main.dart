@@ -1,5 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:Preacher/pages/home.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,9 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Preacher',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        brightness: Brightness.light,
+        primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(),
@@ -26,54 +30,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void getHttps() async {
+      Response response = await Dio().get('https://api.kekesi.dev/Preacher/v1/lang/data.json');
+      print(response.data.toString());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Builder(builder: (context) => SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * .1,
-                  right: MediaQuery.of(context).size.width * .25,
-                  top: MediaQuery.of(context).size.height * .02,
-                  bottom: MediaQuery.of(context).size.height * .02,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {},
-                      child: Tooltip(
-                        message: 'Menu',
-                        child: Icon(Icons.menu, size: MediaQuery.of(context).size.width * .08, color: Colors.black,),
-                      ),
-                    ),
-                  AutoSizeText(" Preacher", textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: MediaQuery.of(context).size.width * .08,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  maxLines: 1,)
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),),
+    return SplashScreen(
+      seconds: 2,
+      title: Text(
+        'Preacher',
+        //AppLocalizations.of(context).translate('title'),
+        style: TextStyle(
+            fontSize: 25,
+            color: Colors.white,
+            fontWeight: FontWeight.bold),
+      ),
+      loadingText: Text(
+        'Loading',
+        //AppLocalizations.of(context).translate('loadString'),
+        style: TextStyle(
+            fontSize: 25,
+            color: Colors.white,
+            fontWeight: FontWeight.bold),
+      ),
+      imageBackground:
+      AssetImage('lib/img/loader.png'),
+      image: Image(
+        image: AssetImage('lib/img/logo_512.png'),
+      ),
+      photoSize: 50,
+      loaderColor: Colors.white,
+      navigateAfterSeconds: Home(),
     );
   }
 }
