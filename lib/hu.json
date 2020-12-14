@@ -1,1 +1,49 @@
-[]
+{
+  "COMMENT": "META",
+  "key": "hu",
+  "localizationKey": "hu-HU",
+
+  "COMMENT": "Splash",
+  "splashTitle": "Preacher",
+  "splashLoading": "Betöltés",
+
+  "COMMENT": "UPDATER",
+  "updateTitle": "Preacher Frissítés",
+  "updateRecentVersion": "Legújjabb Verzió",
+  "updateOutdatedVersion": "Régi Verzió",
+  "updateRecentApi": "Legújjabb Felhő változat",
+  "updateOutdatedApi": "Régi Felhő változat",
+  "updateUptodate": "A Preacher naprakész.",
+  "updateOutdated": "A Preacher frissítésre szorul.",
+
+  "COMMENT": "HOME",
+  "homeTitle": "Preacher",
+  "homeMenuTooltip": "Menü",
+  "home": "Home",
+  "back": "Vissza",
+
+  "errorStateTitle": "Ideiglenes Lezárás",
+  "errorStateSubTitle": "A rész javítandó hibákat tartalmaz. Próbálja újra később.",
+
+  "maintenanceStateTitle": "Ideiglenes Lezárás",
+  "maintenanceStateSubTitle": "Ez a rész karbantartás alatt van. Próbálja újra később.",
+
+  "developerOpenAnyway": "Tovább",
+
+  "COMMENT": "ERRORS",
+  "error": "Hiba",
+  "errorError": "Hiba:",
+  "errorNoconnection": "Csatlakozzon az internethez.",
+  "errorConnectionTimeout": "Csatlakozási idő túllépés.",
+  "errorReceiveTimeout": "Várakozási idő túllépés.",
+  "error404": "Szerver nem található.",
+
+  "COMMENT": "DRAWER",
+  "drawerContributors": "Készítők",
+  "drawerContacts": "Elérhetőség",
+  "drawerLicense": "License",
+  "drawerMore": "Több Infó",
+  "drawerFeedback": "Visszajelzs",
+
+  "drawerSpecial": "Külön köszönet Bory Klárinak."
+}

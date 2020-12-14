@@ -1,1 +1,49 @@
-[]
+{
+  "COMMENT": "META",
+  "key": "en",
+  "localizationKey": "en-EN",
+
+  "COMMENT": "SPLASH",
+  "splashTitle": "Preacher",
+  "splashLoading": "Loading",
+
+  "COMMENT": "UPDATER",
+  "updateTitle": "Preacher Update",
+  "updateRecentVersion": "Most recent Version",
+  "updateOutdatedVersion": "Outdated Version",
+  "updateRecentApi": "Most recent Cloud Usage",
+  "updateOutdatedApi": "Outdated Cloud Usage",
+  "updateUptodate": "Preacher is up to date.",
+  "updateOutdated": "Preacher requires an update.",
+
+  "COMMENT": "HOME",
+  "homeTitle": "Preacher",
+  "homeMenuTooltip": "Menu",
+  "home": "Home",
+  "back": "Back",
+
+  "errorStateTitle": "Temporary  Close",
+  "errorStateSubTitle": "We are working on fixing some bugs. Try again later.",
+
+  "maintenanceStateTitle": "Temporary  Close",
+  "maintenanceStateSubTitle": "This section is currently under maintenance. Try again later.",
+
+  "developerOpenAnyway": "Open anyway",
+
+  "COMMENT": "ERRORS",
+  "error": "Error",
+  "errorError": "Error:",
+  "errorNoconnection": "Please connect to the internet.",
+  "errorConnectionTimeout": "Connection Timeout.",
+  "errorReceiveTimeout": "Receive Timeout.",
+  "error404": "Server not found.",
+
+  "COMMENT": "DRAWER",
+  "drawerContributors": "Contributors",
+  "drawerContacts": "Contacts",
+  "drawerLicense": "License",
+  "drawerMore": "More Info",
+  "drawerFeedback": "Feedback",
+
+  "drawerSpecial": "Special thanks to Klári Bory."
+}

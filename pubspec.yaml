@@ -2,7 +2,7 @@ name: Preacher
 description: An app to read your spiritual books.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 0.0.1+1
+version: 1.0.0+3
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -11,12 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+
   splashscreen: ^1.3.4
   auto_size_text: ^2.1.0
   json_annotation: ^2.4.0
-  json_table: ^1.4.0
   dio: ^3.0.10
-  url_launcher: ^5.7.10
+  url_launcher: ^5.4.2
+  modal_bottom_sheet: ^1.0.0+1
 
 dev_dependencies:
   flutter_test:
@@ -26,4 +29,5 @@ flutter:
   uses-material-design: true
 
   assets:
+     - lib/
      - lib/img/

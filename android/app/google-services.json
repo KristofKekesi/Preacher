@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1048601527446",
+    "project_id": "preacher-4d97a",
+    "storage_bucket": "preacher-4d97a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048601527446:android:0483fabf4c2d58149e2eb7",
+        "android_client_info": {
+          "package_name": "com.kristofkekesi.preacher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048601527446-h4rceoii0etl9r3fvdn9miice07u2i52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR-v60KmJKcyYpRkRR_dDfB9tdF5IYmEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048601527446-h4rceoii0etl9r3fvdn9miice07u2i52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,36 +1,29 @@
 import 'dart:ui';
-import 'package:Preacher/widgets/status.dart';
+
+import 'package:Preacher/widgets/directory.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+
 import '../localization.dart';
-import 'drawer.dart';
-import 'package:Preacher/widgets/languages.dart';
 
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
+class Directory extends StatelessWidget {
+  final String title;
+  final color;
+  final String extension;
+  final String backgroundPre;
+  final List backgroundOptions;
 
-// ignore: must_be_immutable
-class _HomeState extends State<Home> {
-  Size headerSize;
-
-  void initState() {
-    super.initState();
-    SchedulerBinding.instance
-        .addPostFrameCallback((_) => check(context, "meta.json"));
-  }
+  const Directory(this.title, this.color, this.extension, this.backgroundPre, this.backgroundOptions);
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      drawer: SideDrawer(),
       body: Builder(builder: (context) {
         return SafeArea(
           child: Stack(
             children: <Widget>[
-              BuildLanguages("lang/book/data.json"),
+              BuildDirectory(title, extension, color, MediaQuery.of(context).size.width * .1, backgroundPre, backgroundOptions),
               Container(
                 alignment: Alignment.topLeft,
                 child: ClipRect(child: BackdropFilter(
@@ -61,22 +54,17 @@ class _HomeState extends State<Home> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        GestureDetector(
-                          onTap: ()  {
-                            Scaffold.of(context).openDrawer();
-                          },
-                          child: Tooltip(
-                            message: AppLocalizations.of(context).translate('homeMenuTooltip'),
-                            child: Icon(Icons.menu, size: MediaQuery.of(context).size.width * .08, color: Colors.black,),
-                          ),
-                        ),
-                        AutoSizeText(" " + AppLocalizations.of(context).translate('homeTitle'), textAlign: TextAlign.left,
+                        GestureDetector(onTap: (){Navigator.pop(context);}, child: Tooltip(message: AppLocalizations.of(context).translate("back"), child: Icon(Icons.chevron_left, size: MediaQuery.of(context).size.width * .08, color: Colors.black,),),),
+                        Expanded(child: AutoSizeText(
+                          " " + title,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width * .08,
                             fontWeight: FontWeight.bold,
                           ),
+                          minFontSize: 1,
                           maxLines: 1,
+                        ),
                         ),
                       ],
                     ),
