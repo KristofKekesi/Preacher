@@ -8,7 +8,7 @@ import '../localization.dart';
 
 class Directory extends StatelessWidget {
   final String title;
-  final color;
+  final String color;
   final String extension;
   final String backgroundPre;
   final List backgroundOptions;
@@ -23,7 +23,7 @@ class Directory extends StatelessWidget {
         return SafeArea(
           child: Stack(
             children: <Widget>[
-              BuildDirectory(title, extension, color, MediaQuery.of(context).size.width * .1, backgroundPre, backgroundOptions),
+              BuildDirectory(title: title, extension: extension, color: color, padding: MediaQuery.of(context).size.width * .1, backgroundPre: backgroundPre, backgroundOptions: backgroundOptions,),
               Container(
                 alignment: Alignment.topLeft,
                 child: ClipRect(child: BackdropFilter(

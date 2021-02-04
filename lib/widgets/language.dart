@@ -47,6 +47,8 @@ class BuildLanguage extends StatelessWidget {
             List<Widget> books = List<Widget>();
             Response response = snapshot.data;
 
+            print(response.data);
+
             books.add(Container(
                 width: padding - MediaQuery
                 .of(context)
@@ -61,9 +63,7 @@ class BuildLanguage extends StatelessWidget {
                   .of(context)
                   .size
                   .width * .01),
-                child: StatefulBuilder(
-    builder: (BuildContext context, StateSetter setState) {
-    return ClipRRect(
+                child: ClipRRect(
                 borderRadius: BorderRadius.circular((MediaQuery
                     .of(context)
                     .size
@@ -75,11 +75,11 @@ class BuildLanguage extends StatelessWidget {
                   if (response.data['meta']['status'] == "maintenance") {Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MaintenancePage(response.data['data'][i]['name'], response.data['data'][i]['color'], response.data['meta']['url'] + response.data['data'][i]['dir'], response.data['meta']['url'], response.data['data'][i]['images'], Directory(response.data['data'][i]['name'], response.data['data'][i]['color'], response.data['meta']['url'] + response.data['data'][i]['dir'], response.data['meta']['url'], response.data['data'][i]['images'],),))
+                      builder: (context) => MaintenancePage(title: response.data['data'][i]['name'], color: response.data['data'][i]['color'], extension: response.data['meta']['url'] + response.data['data'][i]['dir'], backgroundPre: response.data['meta']['url'], backgroundOptions: response.data['data'][i]['images'], action: Directory(response.data['data'][i]['name'], response.data['data'][i]['color'], response.data['meta']['url'] + response.data['data'][i]['dir'], response.data['meta']['url'], response.data['data'][i]['images'],),))
                   );} else if (response.data['meta']['status'] == "error") {Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>ErrorPage(response.data['data'][i]['name'], response.data['data'][i]['color'], response.data['meta']['url'] + response.data['data'][i]['dir'], response.data['meta']['url'], response.data['data'][i]['images'],Directory(response.data['data'][i]['name'], response.data['data'][i]['color'], response.data['meta']['url'] + response.data['data'][i]['dir'], response.data['meta']['url'], response.data['data'][i]['images'],),))
+                        builder: (context) =>ErrorPage(title: response.data['data'][i]['name'], color: response.data['data'][i]['color'], extension: response.data['meta']['url'] + response.data['data'][i]['dir'], backgroundPre: response.data['meta']['url'], backgroundOptions: response.data['data'][i]['images'], action: Directory(response.data['data'][i]['name'], response.data['data'][i]['color'], response.data['meta']['url'] + response.data['data'][i]['dir'], response.data['meta']['url'], response.data['data'][i]['images'],),))
                   );} else {
                   Navigator.push(
                   context,
@@ -116,7 +116,7 @@ class BuildLanguage extends StatelessWidget {
                         fontWeight: FontWeight.w800, color: Colors.white), maxLines: 3, minFontSize: 1,),),),
                   ],
                   ),
-                ),),),);},),
+                ),),),),
               ),);
                   }
                   books.add(Container(width: padding - MediaQuery.of(context)

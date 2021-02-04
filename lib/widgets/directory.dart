@@ -19,8 +19,8 @@ class BuildDirectory extends StatelessWidget {
   final String backgroundPre;
   final List backgroundOptions;
 
-  BuildDirectory(this.title, this.extension, this.color, this.padding,
-      this.backgroundPre, this.backgroundOptions);
+  const BuildDirectory({Key key, this.title, this.extension, this.color, this.padding, this.backgroundPre, this.backgroundOptions}) : super(key: key);
+
 
   _fetchLanguagesData() async {
     Dio dio = new Dio();
@@ -136,7 +136,7 @@ class BuildDirectory extends StatelessWidget {
                       } else {
                         buttonAction = Directory(
                               response.data['data'][i]['name'],
-                              color,
+                          color,
                               response.data['meta']['url'] +
                                   response.data['data'][i]['dir'],
                               backgroundPre,
@@ -144,20 +144,18 @@ class BuildDirectory extends StatelessWidget {
                             );
                       }
 
-                      print(response.data['meta']['status']);
-
                       if (response.data['meta']['status'] == "error") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => ErrorPage(
-                              response.data['data'][i]['name'],
-                              color,
-                              response.data['meta']['url'] +
+                              title: response.data['data'][i]['name'],
+                              color: color,
+                              extension: response.data['meta']['url'] +
                                   response.data['data'][i]['dir'],
-                              backgroundPre,
-                              backgroundOptions,
-                              buttonAction
+                                backgroundPre: backgroundPre,
+                              backgroundOptions: backgroundOptions,
+                              action: buttonAction
                             ),
                           ),
                         );
@@ -166,13 +164,13 @@ class BuildDirectory extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => MaintenancePage(
-                                response.data['meta']['name'],
-                                color,
-                                response.data['meta']['url'] +
+                                title: response.data['meta']['name'],
+                                color: color,
+                                extension: response.data['meta']['url'] +
                                     response.data['data'][i]['dir'],
-                                backgroundPre,
-                                backgroundOptions,
-                                buttonAction
+                                backgroundPre: backgroundPre,
+                                backgroundOptions: backgroundOptions,
+                                action: buttonAction
                             ),
                           ),
                         );
@@ -181,13 +179,13 @@ class BuildDirectory extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => ErrorPage(
-                                response.data['data'][i]['name'],
-                                color,
-                                response.data['meta']['url'] +
+                                title: response.data['data'][i]['name'],
+                                color: color,
+                                extension: response.data['meta']['url'] +
                                     response.data['data'][i]['dir'],
-                                backgroundPre,
-                                backgroundOptions,
-                                buttonAction
+                                backgroundPre: backgroundPre,
+                                backgroundOptions: backgroundOptions,
+                                action: buttonAction
                             ),
                           ),
                         );

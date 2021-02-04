@@ -33,17 +33,18 @@
   "COMMENT": "ERRORS",
   "error": "Hiba",
   "errorError": "Hiba:",
-  "errorNoconnection": "Csatlakozzon az internethez.",
+  "errorNoConnection": "Csatlakozzon az internethez.",
   "errorConnectionTimeout": "Csatlakozási idő túllépés.",
   "errorReceiveTimeout": "Várakozási idő túllépés.",
   "error404": "Szerver nem található.",
+  "errorDefault": "Vegye fel a kapcsolatot a fejlesztővel.",
 
   "COMMENT": "DRAWER",
   "drawerContributors": "Készítők",
   "drawerContacts": "Elérhetőség",
   "drawerLicense": "License",
   "drawerMore": "Több Infó",
-  "drawerFeedback": "Visszajelzs",
+  "drawerFeedback": "Visszajelzés",
 
   "drawerSpecial": "Külön köszönet Bory Klárinak."
 }

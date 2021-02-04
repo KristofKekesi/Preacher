@@ -151,7 +151,7 @@ class SideDrawer extends StatelessWidget {
 void autoAboutDialog(context) {
   showAboutDialog(
     context: context,
-    applicationVersion: '1.0.0',
+    applicationVersion: '1.0.1',
     applicationName: 'Preacher',
     applicationLegalese: 'Kristóf Kékesi',
     children: [

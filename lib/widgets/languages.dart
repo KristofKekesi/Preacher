@@ -36,7 +36,7 @@ class BuildLanguages extends StatelessWidget {
             if (snapshot.hasError) {
               DioError error = snapshot.error;
               print(error.message);
-              String message = AppLocalizations.of(context).translate("errorNoconnection");
+              String message = AppLocalizations.of(context).translate("errorNoConnection");
               if (error.type == DioErrorType.CONNECT_TIMEOUT)
                 message = AppLocalizations.of(context).translate("errorConnectionTimeout");
               else if (error.type == DioErrorType.RECEIVE_TIMEOUT)
@@ -47,33 +47,6 @@ class BuildLanguages extends StatelessWidget {
             }
             List<Widget> languages = List<Widget>();
             Response response = snapshot.data;
-
-            languages.add(Opacity(opacity: 0, child: Container(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * .1,
-                  right: MediaQuery.of(context).size.width * .25,
-                  top: MediaQuery.of(context).size.height * .03,
-                  bottom: MediaQuery.of(context).size.height * .02,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Icon(Icons.menu, size: MediaQuery.of(context).size.width * .08, color: Colors.black,),
-                    AutoSizeText(" " + AppLocalizations.of(context).translate('homeTitle'), textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width * .08,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      maxLines: 1,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ),);
 
             Widget language;
             for (int i = 0; i < response.data['data'].length; i++) {
@@ -90,14 +63,14 @@ class BuildLanguages extends StatelessWidget {
                 style: TextStyle(color: Colors.black, fontSize: MediaQuery.of(context).size.width * .06, fontWeight: FontWeight.w600),),),);
 
               if (response.data['data'][i]["code"] == AppLocalizations.of(context).translate('localizationKey')) {
-                languages.insert(1, language);
+                languages.insert(0, language);
               } else {
                 languages.add(language);
               }
 
               language = BuildLanguage(response.data['meta']['url'] + response.data['data'][i]['dir'], MediaQuery.of(context).size.width * .1);
               if (response.data['data'][i]["code"] == AppLocalizations.of(context).translate('localizationKey')) {
-                languages.insert(2, language);
+                languages.insert(1, language);
               } else {
                 languages.add(language);
               }
@@ -105,15 +78,7 @@ class BuildLanguages extends StatelessWidget {
 
             languages.add(Container(height: MediaQuery.of(context).size.height * .035,));
 
-            return NotificationListener<OverscrollIndicatorNotification>(
-                onNotification: (OverscrollIndicatorNotification overscroll) {
-                  overscroll.disallowGlow();
-                },child: SingleChildScrollView(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: languages
-                )
-              ),);
+            return Column(crossAxisAlignment: CrossAxisAlignment.start, children: languages);
         }
         return Container();
       },

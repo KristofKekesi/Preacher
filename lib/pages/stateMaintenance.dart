@@ -15,7 +15,7 @@ class MaintenancePage extends StatelessWidget {
   final List backgroundOptions;
   final Widget action;
 
-  MaintenancePage(this.title, this.color, this.extension, this.backgroundPre, this.backgroundOptions, this.action);
+  const MaintenancePage({Key key, this.title, this.color, this.extension, this.backgroundPre, this.backgroundOptions, this.action}) : super(key: key);
 
   double openButtonOpacity() {
     if (developerMode == true) {

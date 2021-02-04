@@ -15,7 +15,7 @@ class ErrorPage extends StatelessWidget {
   final List backgroundOptions;
   final Widget action;
 
-  ErrorPage(this.title, this.color, this.extension, this.backgroundPre, this.backgroundOptions, this.action);
+  const ErrorPage({Key key, this.title, this.color, this.extension, this.backgroundPre, this.backgroundOptions, this.action}) : super(key: key);
 
   double openButtonOpacity() {
     if (developerMode == true) {

@@ -33,10 +33,11 @@
   "COMMENT": "ERRORS",
   "error": "Error",
   "errorError": "Error:",
-  "errorNoconnection": "Please connect to the internet.",
+  "errorNoConnection": "Please connect to the internet.",
   "errorConnectionTimeout": "Connection Timeout.",
   "errorReceiveTimeout": "Receive Timeout.",
   "error404": "Server not found.",
+  "errorDefault": "Contact the developer.",
 
   "COMMENT": "DRAWER",
   "drawerContributors": "Contributors",

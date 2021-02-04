@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:Preacher/widgets/latest.dart';
 import 'package:Preacher/widgets/status.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,39 @@ import 'package:flutter/scheduler.dart';
 import '../localization.dart';
 import 'drawer.dart';
 import 'package:Preacher/widgets/languages.dart';
+
+class HomeHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Opacity(opacity: 0, child: Container(
+      alignment: Alignment.topLeft,
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: MediaQuery.of(context).size.width * .1,
+          right: MediaQuery.of(context).size.width * .25,
+          top: MediaQuery.of(context).size.height * .03,
+          bottom: MediaQuery.of(context).size.height * .02,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Icon(Icons.menu, size: MediaQuery.of(context).size.width * .08, color: Colors.black,),
+            AutoSizeText(" " + AppLocalizations.of(context).translate('homeTitle'), textAlign: TextAlign.left,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: MediaQuery.of(context).size.width * .08,
+                fontWeight: FontWeight.bold,
+              ),
+              maxLines: 1,
+            ),
+          ],
+        ),
+      ),
+    ),
+    );
+  }
+
+}
 
 class Home extends StatefulWidget {
   @override
@@ -30,7 +64,18 @@ class _HomeState extends State<Home> {
         return SafeArea(
           child: Stack(
             children: <Widget>[
-              BuildLanguages("lang/book/data.json"),
+            NotificationListener<OverscrollIndicatorNotification>(
+            onNotification: (OverscrollIndicatorNotification overscroll) {
+          overscroll.disallowGlow();
+        },child: SingleChildScrollView(
+        child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          HomeHeader(),
+          BuildLatest(),
+          BuildLanguages("lang/book/data.json"),
+        ],),),),
+
               Container(
                 alignment: Alignment.topLeft,
                 child: ClipRect(child: BackdropFilter(

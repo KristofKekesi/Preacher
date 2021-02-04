@@ -1,4 +1,3 @@
-int build = 1;
-String apiUrl = "https://api.kekesi.dev/Preacher/v1/";
-bool developerMode = false;
-List<String> quickBack = ["Home"];
+int build = 2;
+String apiUrl = "https://api.kekesi.dev/Preacher/developer/";
+bool developerMode = true;

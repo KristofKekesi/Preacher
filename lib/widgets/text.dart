@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:Preacher/meta.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dio/dio.dart';
@@ -22,6 +24,39 @@ class BuildText extends StatelessWidget {
     return response;
   }
 
+  TextStyle autoStyle(context, String description) {
+
+    // default
+    double size = MediaQuery.of(context).size.height * .06;
+    Color color = Colors.black;
+    FontWeight weight = FontWeight.normal;
+    FontStyle fontStyle = FontStyle.normal;
+
+    if (description.contains("subline")) {size = MediaQuery.of(context).size.width * .04;}
+    else if (description.contains("title")) {size = MediaQuery.of(context).size.width * .06;}
+    else if (description.contains("line")) {size = MediaQuery.of(context).size.width * .06;}
+
+    if (description.contains("Black54")) {color = Colors.black54;}
+    else if (description.contains("Black")) {color = Colors.black;}
+    else if (description.contains("Theme")) {color = Color(int.parse(this.color));}
+
+    if (description.contains("Bold")) {weight = FontWeight.bold;}
+    if (description.contains("Italic")) {fontStyle = FontStyle.italic;}
+
+    return TextStyle(color: color, fontSize: size, fontWeight: weight, fontStyle: fontStyle);
+  }
+
+  TextAlign autoAlign(String description) {
+    // default
+    TextAlign align = TextAlign.start;
+
+    if (description.contains("Left")) {align = TextAlign.start;}
+    else if (description.contains("Right")) {align = TextAlign.end;}
+    else if (description.contains("Justify")) {align = TextAlign.justify;}
+
+    return align;
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -38,6 +73,7 @@ class BuildText extends StatelessWidget {
             if (snapshot.hasError) {
               DioError error = snapshot.error;
               print(error.message);
+              print(error.type);
               String message = AppLocalizations.of(context).translate("errorNoconnection");
               if (error.type == DioErrorType.CONNECT_TIMEOUT)
                 message = AppLocalizations.of(context).translate("errorConnectionTimeout");
@@ -45,6 +81,9 @@ class BuildText extends StatelessWidget {
                 message = AppLocalizations.of(context).translate("errorReceiveTimeout");
               else if (error.type == DioErrorType.RESPONSE)
                 message = AppLocalizations.of(context).translate("error404") + ' ${error.response.statusCode}';
+              else if (error.type == DioErrorType.DEFAULT) {
+                message = AppLocalizations.of(context).translate("errorDefault");
+              }
               return Center(child: Padding(padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .1, right: MediaQuery.of(context).size.width * .1), child: Text(AppLocalizations.of(context).translate("errorError") + ' $message', style: TextStyle(fontSize: MediaQuery.of(context).size.width * .06, fontWeight: FontWeight.w600),),),);
             }
             List<Widget> render = List<Widget>();
@@ -83,8 +122,8 @@ class BuildText extends StatelessWidget {
 
               bool elseCheck = false;
 
-        // TITLES
-        if (response.data["data"][i]["type"] == "titleWithFirstWordNum") {
+        // WithFirstWordNum
+        if (response.data["data"][i]["type"].contains("WithFirstWordNum")) {
         text = Align(
         alignment: Alignment.topLeft,
         child: Padding(
@@ -107,6 +146,7 @@ class BuildText extends StatelessWidget {
             .width * .02,
         ), child:
         RichText(
+          textAlign: autoAlign(response.data['data'][i]["type"]),
           text: TextSpan(
             style: TextStyle(color: Color(int.parse(color)),
                 fontSize: MediaQuery
@@ -116,66 +156,13 @@ class BuildText extends StatelessWidget {
                 fontWeight: FontWeight.bold),
             children: <TextSpan>[
               TextSpan(text: response.data['data'][i]["value"].split(" ")[0],
-                  style: TextStyle(color: Color(int.parse(color)),
-                    fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery
-                        .of(context)
-                        .size
-                        .width * .04,),),
+                  style: autoStyle(context, response.data["data"][i]["type"] + "sublineTheme"),),
               TextSpan(text: " " + response.data['data'][i]["value"].split(" ").sublist(1).join(" ").toString(),
-                  style: TextStyle(color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery
-                        .of(context)
-                        .size
-                        .width * .06,),),
+                  style: autoStyle(context, response.data["data"][i]["type"]),),
             ],
           ),),
         ),);
-        }
-
-        // LINES
-        else if (response.data["data"][i]["type"] == "line") {
-                text = Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      left: MediaQuery
-                          .of(context)
-                          .size
-                          .width * .1,
-                      right: MediaQuery
-                          .of(context)
-                          .size
-                          .width * .1,
-                      top: MediaQuery
-                          .of(context)
-                          .size
-                          .width * .01,
-                      bottom: MediaQuery
-                          .of(context)
-                          .size
-                          .width * .02,
-                    ), child: RichText(
-                    text: TextSpan(
-                      text: (i + 1).toString(),
-                      style: TextStyle(color: Color(int.parse(color)),
-                          fontSize: MediaQuery
-                              .of(context)
-                              .size
-                              .width * .04,
-                          fontWeight: FontWeight.bold),
-                      children: <TextSpan>[
-                        TextSpan(text: " " + response.data['data'][i]["value"],
-                            style: TextStyle(color: Colors.black,
-                              fontWeight: FontWeight.normal,
-                              fontSize: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width * .06,)),
-                      ],
-                    ),),),);
-              } else if (response.data["data"][i]["type"] == "lineWithoutNum") {
+        } else if (response.data["data"][i]["type"].contains("WithoutNum")) {
           text = Align(
             alignment: Alignment.topLeft,
             child: Padding(
@@ -198,23 +185,46 @@ class BuildText extends StatelessWidget {
                     .width * .02,
               ), child:
             RichText(
+              textAlign: autoAlign(response.data["data"][i]["type"]),
               text: TextSpan(
-                style: TextStyle(color: Color(int.parse(color)),
-                    fontSize: MediaQuery
-                        .of(context)
-                        .size
-                        .width * .06,
-                    fontWeight: FontWeight.normal),
+                style: TextStyle(),
                 children: <TextSpan>[
                   TextSpan(text: response.data['data'][i]["value"],
-              style: TextStyle(color: Colors.black,
-                fontSize: MediaQuery
-                  .of(context)
-                  .size
-                  .width * .06,),),
+              style: autoStyle(context, response.data["data"][i]["type"])),
 
             ],),),),);
-        } else {elseCheck = true;}
+        } // LINES
+        else {
+          text = Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: MediaQuery
+                    .of(context)
+                    .size
+                    .width * .1,
+                right: MediaQuery
+                    .of(context)
+                    .size
+                    .width * .1,
+                top: MediaQuery
+                    .of(context)
+                    .size
+                    .width * .01,
+                bottom: MediaQuery
+                    .of(context)
+                    .size
+                    .width * .02,
+              ), child: RichText(
+              text: TextSpan(
+                text: (i + 1).toString(),
+                style: autoStyle(context, response.data['data'][i]["type"] + "sublineTheme"),
+                children: <TextSpan>[
+                  TextSpan(text: " " + response.data['data'][i]["value"],
+                      style: autoStyle(context, response.data['data'][i]["type"])),
+                ],
+              ),),),);
+        }
 
               if (elseCheck == false){render.add(text);}
             }
