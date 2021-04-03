@@ -1,4 +1,5 @@
 import 'package:Preacher/meta.dart';
+import 'package:Preacher/widgets/promo.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -28,7 +29,9 @@ class SideDrawer extends StatelessWidget {
         child: NotificationListener<OverscrollIndicatorNotification>(
       onNotification: (OverscrollIndicatorNotification overscroll) {
       overscroll.disallowGlow();
-      },child: ListView(
+      },child: Container(
+    color: Colors.white,
+    child: ListView(
           children: <Widget>[
             Container(
               height: MediaQuery.of(context).size.height * .2,
@@ -77,6 +80,10 @@ class SideDrawer extends StatelessWidget {
                 ),
               ),
             ),
+            Divider(
+              thickness: MediaQuery.of(context).size.height * .005,
+            ),
+            PromoWidget(),
             Divider(
               thickness: MediaQuery.of(context).size.height * .005,
             ),
@@ -143,7 +150,7 @@ class SideDrawer extends StatelessWidget {
             ),),
           ],
         ),
-      ),),
+      ),),),
     );
   }
 }
@@ -151,7 +158,7 @@ class SideDrawer extends StatelessWidget {
 void autoAboutDialog(context) {
   showAboutDialog(
     context: context,
-    applicationVersion: '1.0.1',
+    applicationVersion: '2.0',
     applicationName: 'Preacher',
     applicationLegalese: 'Kristóf Kékesi',
     children: [
